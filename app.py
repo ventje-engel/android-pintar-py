@@ -37,7 +37,7 @@ def start():
     try:
         #text = pytesseract.image_to_string(Image.open(BytesIO(response.content)))
         byteImgIO = BytesIO()
-        byteImg = Image.open("response.content")
+        byteImg = Image.open(response.content)
         byteImg.save(byteImgIO, "JPG")
         byteImgIO.seek(0)
         byteImg = byteImgIO.read()
