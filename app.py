@@ -42,7 +42,7 @@ def start():
         byteImgIO.seek(0)
         byteImg = byteImgIO.read()
         
-        dataBytesIO = io.BytesIO(byteImg)
+        dataBytesIO = BytesIO(byteImg)
         text = pytesseract.image_to_string(Image.open(dataBytesIO))
     except Exception as error:
         return str(error)
