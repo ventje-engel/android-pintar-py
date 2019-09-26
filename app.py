@@ -35,15 +35,8 @@ def start():
     response = requests.get(link, stream=True)
     
     try:
-        #text = pytesseract.image_to_string(Image.open(BytesIO(response.content)))
-        byteImgIO = BytesIO()
-        byteImg = Image.open(response.content)
-        byteImg.save(byteImgIO, "JPG")
-        byteImgIO.seek(0)
-        byteImg = byteImgIO.read()
-        
-        dataBytesIO = BytesIO(byteImg)
-        text = pytesseract.image_to_string(Image.open(dataBytesIO))
+        byteImg = BytesIO(response.content)
+        text = pytesseract.image_to_string(Image.open(byteImg))
     except Exception as error:
         return str(error)
     return text
